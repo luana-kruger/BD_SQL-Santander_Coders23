@@ -1,4 +1,4 @@
-create table tb_projeto_nao_normalizado(
+create table stage.stg_projeto_nao_normalizado(
 	pronac int primary key
 	,ano_projeto varchar(2)
 	,nome varchar(8000)
@@ -17,7 +17,7 @@ create table tb_projeto_nao_normalizado(
 	,valor_aprovado varchar(50)
 );
 
-create table tb_incentivo_nao_normalizado(
+create table stage.stg_incentivo_nao_normalizado(
 	id_tmp_incentivos_salic int primary key
 	,pronac int
 	,valor varchar(50)
