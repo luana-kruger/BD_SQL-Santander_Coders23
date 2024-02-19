@@ -39,9 +39,9 @@ Para aplicar a normalização nas tabelas, vamos analisar a estrutura atual e id
    - A tabela "Projeto" terá uma chave estrangeira *id_proponente* referenciando a tabela Proponente.
 
 2. **Tabela Incentivos:**
-   - Manter os atributos: id_tmp_incentivos_salic, pronac, valor, data_recibo.
+   - Manter os atributos: pronac, valor, data_recibo.
   
-   - A chave primária será o **id_tmp_incentivos_salic**.
+   - A chave primária será o **id_incentivo**, uma chave primária substituta.
   
    - Criar uma tabela "Incentivador" com os atributos: cgc_cpf, nome_doador, tipo_pessoa.
   
@@ -72,7 +72,7 @@ Para aplicar a normalização nas tabelas, vamos analisar a estrutura atual e id
 |--------------|----------------------------------------------------------------------|
 | Projeto      | **pronac** (PK), ano_projeto, nome_projeto, segmento, area, uf, municipio, data_inicio, data_termino, situacao, mecanismo, enquadramento, valor_solicitado, valor_aprovado, *id_proponente* (FK) |
 | Proponente   | **id_proponente** (PK), cgc_cpf, proponente                  |
-| Incentivos   | **id_tmp_incentivos_salic** (PK), *pronac* (FK), valor, data_recibo, *id_incentivador* (FK)          |
+| Incentivos   | **id_incentivo** (PK), *pronac* (FK), valor, data_recibo, *id_incentivador* (FK)          |
 | Incentivador | **id_incentivador** (PK), cgc_cpf, nome_doador, tipo_pessoa  |
 
 
