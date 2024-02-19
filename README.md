@@ -85,7 +85,6 @@ Para aplicar a normalização nas tabelas, vamos analisar a estrutura atual e id
 
 ### Diagrama Entidade-Relacionamento
 
-![DER](images/db_Rouanet.png)
 ![Esquemático DER](images/esquematico_der_normalizado.png)
 
 
