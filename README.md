@@ -72,7 +72,7 @@ Para aplicar a normalização nas tabelas, vamos analisar a estrutura atual e id
 |--------------|----------------------------------------------------------------------|
 | Projeto      | **pronac** (PK), ano_projeto, nome_projeto, segmento, area, uf, municipio, data_inicio, data_termino, situacao, mecanismo, enquadramento, valor_solicitado, valor_aprovado, *id_proponente* (FK) |
 | Proponente   | **id_proponente** (PK), cgc_cpf, proponente                  |
-| Incentivos   | **id_tmp_incentivos_salic** (PK), *pronac* (FK), valor, data_recibo, cgc_cpf, *id_incentivador* (FK)          |
+| Incentivos   | **id_tmp_incentivos_salic** (PK), *pronac* (FK), valor, data_recibo, *id_incentivador* (FK)          |
 | Incentivador | **id_incentivador** (PK), cgc_cpf, nome_doador, tipo_pessoa  |
 
 
