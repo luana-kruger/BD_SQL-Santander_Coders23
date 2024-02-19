@@ -34,7 +34,7 @@ Para aplicar a normalização nas tabelas, vamos analisar a estrutura atual e id
   
    - Criar uma tabela "Proponente" com os atributos: cgc_cpf, proponente.
   
-   - A nova tabela “Proponente” incluirá um novo atributo **id_proponente** como chave primária (número serial gerado automaticamente pelo PostgreSQL), para contornar a restrição de não poder usar o *cgc_cpf* como chave primária. Isso ocorre porque, no caso de um CPF ser fornecido, parte dele será substituída por asteriscos para preservar a privacidade do titular. Essa abordagem garantirá a unicidade dos registros sem expor dados sensíveis. 
+   - A nova tabela “Proponente” incluirá um novo atributo **id_proponente** como chave primária (número serial gerado automaticamente pelo PostgreSQL), para contornar a necessidade de termos de usar o *cgc_cpf* e o *proponente* como chave primária composta. Isso ocorre porque, no caso de um CPF ser fornecido, parte dele será substituída por asteriscos para preservar a privacidade do titular, sendo então necessário também utilizar o nome para garantir a unicidade dos dados. Essa abordagem garantirá a unicidade dos registros sem expor dados sensíveis e sem a necessidade de uma chave composta nos relacionamentos. 
     
    - A tabela "Projeto" terá uma chave estrangeira *id_proponente* referenciando a tabela Proponente.
 
@@ -45,7 +45,7 @@ Para aplicar a normalização nas tabelas, vamos analisar a estrutura atual e id
   
    - Criar uma tabela "Incentivador" com os atributos: cgc_cpf, nome_doador, tipo_pessoa.
   
-   - A nova tabela "Incentivador" incluirá um novo atributo **id_incentivador** como chave primária (número serial gerado automaticamente pelo PostgreSQL).
+   - A nova tabela "Incentivador" incluirá um novo atributo **id_incentivador** como chave primária (número serial gerado automaticamente pelo PostgreSQL) devido a mesma situação apresentada na tabela "Proponente".
   
    - A tabela "Incentivos" terá uma chave estrangeira *id_incentivador* referenciando a tabela Incentivador.
 
