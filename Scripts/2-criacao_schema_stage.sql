@@ -1,2 +1,2 @@
--- Create de um esquema para a área de stage
-create schema teste;
+-- Create de um esquema para a ï¿½rea de stage
+create schema stage;
