@@ -64,10 +64,10 @@ ORDER BY
     quantidade_projetos DESC;
 
 
--- View 5 -- Projetos em ordem de Valor Solicitado
+-- View 5 -- Projetos em ordem de Valor Aprovado
 /* Esta view exibe os projetos ordenados de acordo com o valor aprovado, excluindo projetos com valores nulos */
 
-CREATE VIEW view_projetos_ordem_valor_solicitado AS
+CREATE VIEW view_projetos_ordem_valor_aprovado AS
 SELECT
     p.nome_projeto,
     p.valor_aprovado
@@ -181,7 +181,7 @@ select * from view_valor_total_por_area
 select * from view_projetos_aprovados_por_area
 select * from view_projetos_por_area_situacao
 select * from view_quantidade_projetos_por_estado
-select * from view_projetos_ordem_valor_solicitado
+select * from view_projetos_ordem_valor_aprovado
 select * from view_projetos_maior_valor_solicitado
 select * from view_projetos_aprovados_acima_media
 select * from view_projetos_mais_incentivados
