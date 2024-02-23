@@ -90,8 +90,56 @@ Para aplicar a normalização nas tabelas, vamos analisar a estrutura atual e id
 
 ## Implementação do Banco de Dados
 
-[em construção ...]
+Na pasta [Scripts](./Scripts/) deste repositório, estão contidos sete scripts SQL elaborados para implementar o banco de dados destinado a armazenar informações relacionadas à Lei Rouanet. Esses scripts utilizam os dados presentes na pasta [db_Rouanet](./db_Rouanet/), que incluem informações sobre projetos, proponentes, incentivos, entre outros. O objetivo é facilitar consultas e análises desses dados. 
 
+A seguir, apresenta-se a descrição de cada um desses scripts:
+
+- **[Script 1](./Scripts/1-criacao_database.sql) - Criar Banco de Dados**:
+   - Nome: `db_dados_rouanet`
+   - Encoding: UTF8
+   - Limitação de Conexão: Ilimitada
+
+- **[Script 2](./Scripts/2-criacao_schema_stage.sql) - Criar Esquema**:
+   - Nome: `stage` (para área de stage) 
+   > O esquema *stage* é usado para armazenar temporariamente os dados brutos ou semiestruturados antes que sejam transformados e carregados no esquema final de produção.
+
+- **[Script 3](./Scripts/3-criacao_tabelas_stage.sql) - Criar Tabelas Stage e índices**:
+   - `stg_projeto_nao_normalizado` (Stage de Projetos)
+   - `stg_incentivo_nao_normalizado` (Stage de Incentivos)
+   - `ix_proponente` (Proponente)
+   - `ix_projeto` (Projeto)
+   - `ix_incentivador` (Incentivador)
+   - `ix_projeto_incentivado` (Projeto Incentivado)
+  
+- **[Script 4](./Scripts/4-populacao_tabelas_stage.sql) - Carregar Dados**:
+   - Arquivo CSV de Projetos em `stg_projeto_nao_normalizado`
+   - Arquivo CSV de Incentivos em `stg_incentivo_nao_normalizado`
+
+- **[Script 5](./Scripts/5-criacao_tabelas_normalizadas.sql) - Criar Tabelas Normalizadas**:
+   - `Proponente` (Tabela de Proponentes)
+   - `Projeto` (Tabela de Projetos)
+   - `Incentivador` (Tabela de Incentivadores)
+   - `Incentivos` (Tabela de Incentivos)
+
+- **[Script 6](./Scripts/6-carregamento_tabelas_normalizadas.sql) - Carregar dados nas Tabelas Normalizadas**:
+   - `Proponente` (Insere dados únicos de CGC/CPF e nome de proponentes do arquivo de projetos não normalizado - *stg_projeto_nao_normalizado*)
+   - `Projeto` (Insere dados de projetos do arquivo de projetos não normalizado )
+   - `Incentivador` (Insere dados únicos de CGC/CPF, nome doador e tipo de pessoa (física ou jurídica) do arquivo de incentivos não normalizado - *stg_incentivo_nao_normalizado*)
+   - `Incentivos` (Insere dados de incentivos do arquivo de incentivos não normalizado, recuperando o ID do incentivador)
+
+- **[Script 7](./Scripts/7-criacao_views.sql) - Criar Views**:
+   - `view_valor_total_por_area`
+   - `view_projetos_aprovados_por_area`
+   - `view_projetos_por_area_situacao`
+   - `view_quantidade_projetos_por_estado`
+   - `view_projetos_ordem_valor_aprovado`
+   - `view_projetos_maior_valor_solicitado`
+   - `view_projetos_aprovados_acima_media`
+   - `view_projetos_mais_incentivados`
+   - `incentivador_mais_doou`
+   - `projetos_maior_diferenca`
+
+&nbsp;
 
 ## Criação de Views
 
@@ -104,18 +152,18 @@ No [script 7](./Scripts/7-criacao_views.sql), são criadas algumas ***views*** q
 A primeira ***view*** do [script 7](./Scripts/7-criacao_views.sql) apresenta o valor total aprovado para projetos agrupados por área:
 
 <!-- ![view 1](images/view1.png) -->
-<div style="text-align:center;">
+<p align="center">
 <img src="images/view1.png" alt="view 1" width="40%" height="40%">
-</div>
+</p>
 
 Aqui podemos destacar duas informações. Primeiramente, podemos identificar quais são as formas de expressão cultural contempladas pela Lei Rouanet, são oito. Em segundo lugar, entre as formas artísticas contempladas, aquelas que receberam maior fomento desde o início da lei são as Artes Cênicas (circo, dança, mímica, ópera, teatro e similares) e a Música (música popular, instrumental e erudita, além de canto coral), ambas com incentivos totais na ordem dos 20 bilhões de reais. Essas áreas também são as que mais tiveram projetos aprovados, conforme evidenciado pela ***view 2*** ([script 7](./Scripts/7-criacao_views.sql)).
 
 Para obter a quantidade de projetos por estado, utilizaremos a ***view 4***:
 
 <!-- ![view 4](images/view4.png) -->
-<div style="text-align:center;">
+<p align="center">
 <img src="images/view4.png" alt="view 4" width="40%" height="40%">
-</div>
+</p>
 
 É perceptível que os seis primeiros estados são do eixo sul-sudeste. Em sétimo lugar, temos o estado da Bahia, com 4406 projetos, o que representa aproximadamente um oitavo do número de projetos do primeiro colocado, que é o estado de São Paulo. 
 
