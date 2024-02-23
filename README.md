@@ -4,7 +4,7 @@ Este projeto faz parte da avaliação do módulo II do programa Santander Coders
 
 ### Lei Rouanet: Contextualização
 
-A [Lei Rouanet](https://www.planalto.gov.br/ccivil_03/leis/l8313cons.htm), oficialmente conhecida como Lei Federal de Incentivo à Cultura, é um mecanismo de incentivo fiscal no Brasil que permite que empresas e pessoas físicas destinem parte do imposto devido para projetos culturais aprovados pelo [Ministério da Cultura](https://www.gov.br/cultura/pt-br). Ela é uma importante ferramenta de fomento à cultura no país, incentivando a realização de projetos culturais e a democratização do acesso à cultura.
+A [Lei Rouanet](https://www.planalto.gov.br/ccivil_03/leis/l8313cons.htm), oficialmente conhecida como Lei Federal de Incentivo à Cultura, é um mecanismo de incentivo fiscal no Brasil que permite que empresas e pessoas físicas destinem parte do Imposto de Renda (IR) devido para projetos culturais aprovados pelo [Ministério da Cultura](https://www.gov.br/cultura/pt-br). Ela é uma importante ferramenta de fomento à cultura no país, incentivando a realização de projetos culturais e a democratização do acesso à cultura.
 
 ## Bases de Dados utilizadas 
 Para este projeto, serão utilizadas duas bases de dados no formato CSV. Essas bases contêm informações sobre os projetos culturais que solicitaram incentivos (*projetos_rouanet.csv*) e sobre os incentivos que foram ofertados (*incentivos_rouanet.csv*). Ambos os arquivos estão localizados na pasta [db_Rouanet](./db_Rouanet/) deste repositório.
