@@ -5,7 +5,11 @@ insert into proponente (
 )
 select distinct cgccpf 
 	, proponente
-from stage.stg_projeto_nao_normalizado a;
+from stage.stg_projeto_nao_normalizado a
+where not exists(select 1
+				from public.proponente b
+				where a.cgccpf = b.cgc_cpf
+					and a.proponente = b.proponente);
 
 -- Carregamento dos dados do projeto, já recuperando o id do proponente
 -- Verificado que existem datas de inicio e termino em branco, assim como os valores solicitado e aprovado
@@ -57,7 +61,11 @@ select a.pronac
 from stage.stg_projeto_nao_normalizado a
 inner join public.proponente b
 	on a.cgccpf = b.cgc_cpf
-	and a.proponente = b.proponente;
+	and a.proponente = b.proponente
+where not exists(select 1
+				 from projeto c
+				 where a.pronac = c.pronac
+);
 
 -- Carregamento dos dados do incentivador
 -- Feito tratamento do campo tipo de pessoa, pois alguns casos vieram vazios (1 - Jurídica, 0 - Física)
@@ -72,7 +80,11 @@ select distinct cgccpf
 		when length(cgccpf) > 11 then 1
 		else 0
 	end tipo_pessoa
-from stage.stg_incentivo_nao_normalizado a;
+from stage.stg_incentivo_nao_normalizado a
+where not exists(select 1
+				 from incentivador b
+				where a.cgccpf = b.cgc_cpf
+					and a.nome_doador = b.nome_doador);
 
 -- Carregamento dos dados dos incentivos, já recuperando o id do incentivador
 insert into incentivos (
@@ -90,7 +102,13 @@ inner join public.incentivador b
 	on a.cgccpf = b.cgc_cpf 
 	and a.nome_doador  = b.nome_doador 
 inner join public.projeto c
-	on c.pronac = a.pronac;
+	on c.pronac = a.pronac
+where not exists(select 1
+				 from incentivos d
+				 where a.pronac = d.pronac
+					and (a.valor::numeric) = d.valor
+					and (a.data_recibo::date) = d.data_recibo
+					and b.id_incentivador = d.id_incentivador);
 
 
 /*---------------------------------
