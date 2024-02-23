@@ -95,8 +95,39 @@ Para aplicar a normalização nas tabelas, vamos analisar a estrutura atual e id
 
 ## Criação de Views
 
-[em construção ...]
+Conforme a [Secretaria de Comunicação Social]( https://www.gov.br/secom/pt-br/fatos/brasil-contra-fake/noticias/2023/3/o-que-voce-precisa-saber-sobre-a-lei-rouanet), a Lei Federal de Incentivo à Cultura opera mediante renúncia fiscal de empresas que direcionam parte de seus impostos para o incentivo à cultura. Por meio desse mecanismo, as empresas podem deduzir até 4% do Imposto de Renda da próxima declaração.
 
+Para obter informações importantes sobre os dados de incentivos à cultura do país, podemos utilizar ***views***, que são consultas armazenadas que se comportam como tabelas virtuais. Isso permite aos usuários acessar e manipular os dados de forma simplificada e segura. As ***views*** podem ser uma ferramenta poderosa para gerar *insights* sobre o banco de dados, pois possibilitam a criação de visões personalizadas dos dados, facilitando análises complexas e a obtenção de informações específicas.
+
+No [script 7](./Scripts/7-criacao_views.sql), são criadas algumas ***views*** que permitem discutir informações sobre os projetos e incentivos que utilizam a Lei Rouanet. É importante primeiro verificar quais áreas são contempladas pela lei e quanto cada área arrecadou desde o primeiro incentivo, lembrando que essa lei está em vigor desde 1991.
+
+A primeira ***view*** do [script 7](./Scripts/7-criacao_views.sql) apresenta o valor total aprovado para projetos agrupados por área:
+
+<!-- ![view 1](images/view1.png) -->
+<div style="text-align:center;">
+<img src="images/view1.png" alt="view 1" width="40%" height="40%">
+</div>
+
+Aqui podemos destacar duas informações. Primeiramente, podemos identificar quais são as formas de expressão cultural contempladas pela Lei Rouanet, são oito. Em segundo lugar, entre as formas artísticas contempladas, aquelas que receberam maior fomento desde o início da lei são as Artes Cênicas (circo, dança, mímica, ópera, teatro e similares) e a Música (música popular, instrumental e erudita, além de canto coral), ambas com incentivos totais na ordem dos 20 bilhões de reais. Essas áreas também são as que mais tiveram projetos aprovados, conforme evidenciado pela ***view 2*** ([script 7](./Scripts/7-criacao_views.sql)).
+
+Para obter a quantidade de projetos por estado, utilizaremos a ***view 4***:
+
+<!-- ![view 4](images/view4.png) -->
+<div style="text-align:center;">
+<img src="images/view4.png" alt="view 4" width="40%" height="40%">
+</div>
+
+É perceptível que os seis primeiros estados são do eixo sul-sudeste. Em sétimo lugar, temos o estado da Bahia, com 4406 projetos, o que representa aproximadamente um oitavo do número de projetos do primeiro colocado, que é o estado de São Paulo. 
+
+De fato, ao analisarmos o resultado da **view 8**, que mostra os 10 projetos que receberam o maior valor total de incentivos, observamos que todos esses projetos estão localizados na região sudeste do país. Isso revela a concentração dos recursos captados por meio da Lei Rouanet nessa região.
+
+![view 8](images/view8.png)
+
+A concentração dos recursos da Lei Rouanet na região sudeste do Brasil se deve principalmente à infraestrutura cultural mais desenvolvida, ao maior mercado consumidor, à presença dos principais centros urbanos e à maior facilidade das empresas locais em captar recursos por meio de incentivos fiscais. Esses fatores combinados acabam atraindo mais investimentos e projetos culturais para essa região em comparação com outras partes do país. 
+
+Essa concentração dos recursos da Lei Rouanet na região sudeste do Brasil também evidencia como a desigualdade presente no país se reflete até mesmo na cultura, com uma distribuição desproporcional de investimentos e oportunidades entre as diferentes regiões. Essa realidade destaca a importância de políticas culturais que busquem promover uma maior democratização do acesso à cultura em todo o território nacional.
+
+Através do [script 7](./Scripts/7-criacao_views.sql), é possível obter diversos *insights* adicionais, mas para manter a discussão concisa, abordamos alguns dos pontos mais relevantes ao analisar os dados dos incentivos à cultura. Em resumo, a cultura é um dos grandes orgulhos nacionais do Brasil, seja pela produção musical diversificada, pelas obras audiovisuais, pelas festas populares ou pelas diversas manifestações artísticas. A cultura desempenha um papel fundamental na geração de empregos, renda e conhecimento. Nesse contexto, a Lei Rouanet assume grande importância, evidenciando seu claro objetivo de fomentar a cultura no país.
 
 &nbsp;
 
